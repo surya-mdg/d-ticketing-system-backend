@@ -20,9 +20,9 @@ contract TicketTest is Test {
         vm.deal(user2, 10 ether);
 
         vm.startPrank(user1);
-        ticket.mint("https://www.google.com", block.timestamp + 120, 0, 0, 2);
-        ticket.mint("https://www.yahoo.com", block.timestamp + 120, 1, 120, 2);
-        ticket.mint("https://www.hotmail.com", block.timestamp + 120, 2, 0, 2);
+        ticket.mint("","","","", block.timestamp + 120, 0, 0, 2);
+        ticket.mint("","","","", block.timestamp + 120, 1, 120, 2);
+        ticket.mint("","","","", block.timestamp + 120, 2, 0, 2);
         vm.stopPrank();
     }
 
@@ -30,10 +30,10 @@ contract TicketTest is Test {
         vm.startPrank(user1);
         vm.expectEmit(true, true, false, false);
         emit TokenMinted(user1, 3);
-        ticket.mint("https://www.google.com", block.timestamp + 120, 0, 0, 1);
+        ticket.mint("","","","", block.timestamp + 120, 0, 0, 1);
 
         vm.expectRevert("Mint Error: Event time needs to be greater than current time");
-        ticket.mint("https://www.google.com", 1, 0, 0, 1);
+        ticket.mint("","","","", 1, 0, 0, 1);
     }
 
     function test_Sell() public{
